@@ -100,7 +100,7 @@ a{color:var(--or)}
  .c3{animation-delay:.05s}.c2{animation-delay:.2s}.c4{animation-delay:.3s}.c1{animation-delay:.4s}.c5{animation-delay:.5s}
  @keyframes deal{from{transform:rotate(0deg) translateY(46px);opacity:0}to{transform:rotate(var(--r)) translateY(0);opacity:1}}
 }
-.hero h1{font-size:clamp(34px,9vw,64px);letter-spacing:.14em;color:var(--or);margin:18px 0 2px;text-shadow:0 0 30px rgba(198,155,60,.25)}
+.hero .brandname{font-family:Cinzel,serif;font-weight:700;font-size:clamp(34px,9vw,64px);letter-spacing:.14em;color:var(--or);margin:18px 0 2px;text-shadow:0 0 30px rgba(198,155,60,.25)}
 .hero .who{font-family:Cinzel,serif;color:var(--or2);font-size:clamp(16px,4vw,20px);margin-bottom:10px}
 .hero .tag{font-size:clamp(17px,4.5vw,21px);max-width:34ch;margin:0 auto}
 .hero .sign{font-style:italic;color:var(--or2);margin-top:8px;font-size:15px}
@@ -292,8 +292,8 @@ footer .sign{font-style:italic;color:var(--or2);margin-top:10px}
   <div class="pcard c4"><span class="pip tl p-red">V<svg class="suit s-red"><use href="#carreau"/></svg></span><svg class="suit big s-red"><use href="#carreau"/></svg><span class="pip br p-red">V<svg class="suit s-red"><use href="#carreau"/></svg></span></div>
   <div class="pcard c5"><span class="pip tl p-blk">10<svg class="suit s-blk"><use href="#trefle"/></svg></span><svg class="suit big s-blk"><use href="#trefle"/></svg><span class="pip br p-blk">10<svg class="suit s-blk"><use href="#trefle"/></svg></span></div>
  </div>
- <h1>CÔTÉ MAGIE</h1>
- <p class="who">Francis Darcy — Magicien à Issoudun</p>
+ <p class="brandname">CÔTÉ MAGIE</p>
+ <h1 class="who">Francis Darcy — Magicien à Issoudun</h1>
  <p class="tag">Un magicien professionnel qui transforme vos événements en moments inoubliables.</p>
  <p class="sign">Des rires, des sourires et des souvenirs…</p>
  <p class="exp">Plus de 25&nbsp;ans d'expérience — Issoudun &amp; Centre-Val de Loire</p>
@@ -494,7 +494,11 @@ footer .sign{font-style:italic;color:var(--or2);margin-top:10px}
  <p class="sub">Parlez-nous de votre événement&nbsp;: Francis vous répond personnellement.</p>
  <div class="ct-grid">
   <div class="ct-card">
-   <form action="mailto:cotemagie@gmail.com" method="post" enctype="text/plain">
+   <form action="https://formsubmit.co/cotemagie@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="Nouvelle demande de devis — cotemagie.fr">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="box">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
     <div><label for="nom">Votre nom</label><input id="nom" name="nom" type="text" autocomplete="name" required></div>
     <div><label for="tel">Téléphone ou e-mail</label><input id="tel" name="contact" type="text" inputmode="tel" autocomplete="tel" required></div>
     <div><label for="type">Type d'événement</label>
@@ -525,7 +529,7 @@ footer .sign{font-style:italic;color:var(--or2);margin-top:10px}
  <p>Francis Darcy — Magicien professionnel</p>
  <p>3 rue Serge Cligman, 36100 Issoudun</p>
  <p><a href="tel:+33672118229">06 72 11 82 29</a> · <a href="mailto:cotemagie@gmail.com">cotemagie@gmail.com</a></p>
- <p style="margin-top:14px;font-size:13px;line-height:1.9"><a href="close-up.html">Close-up</a> &middot; <a href="spectacles-enfants.html">Spectacles enfants</a> &middot; <a href="magie-aines.html">Magie aînés</a> &middot; <a href="sculpture-ballons.html">Sculpture ballons</a> &middot; <a href="ateliers-magie.html">Ateliers magie</a></p>
+ <p style="margin-top:14px;font-size:13px;line-height:1.9"><a href="close-up.html">Close-up</a> &middot; <a href="spectacles-enfants.html">Spectacles enfants</a> &middot; <a href="magie-aines.html">Magie aînés</a> &middot; <a href="sculpture-ballons.html">Sculpture ballons</a> &middot; <a href="ateliers-magie.html">Ateliers magie</a> &middot; <a href="mentions-legales.html">Mentions légales</a></p>
  <p class="sign">Des rires, des sourires et des souvenirs…</p>
 </footer>
 
@@ -705,7 +709,7 @@ footer .sign{font-style:italic;color:var(--or2);margin-top:10px}
   document.getElementById('cmPics').innerHTML=d.p.map(function(ph){return '<img src="'+ph[0]+'" alt="'+ph[1]+'" loading="lazy">';}).join('');
   var PAGE={closeup:'close-up',enfants:'spectacles-enfants',aines:'magie-aines',ballons:'sculpture-ballons',ateliers:'ateliers-magie'};
   document.getElementById('cmBody').innerHTML=d.b.map(function(t){return '<p>'+t+'</p>';}).join('');
-  var cp=document.getElementById('cmPage');if(PAGE[key]){cp.href=PAGE[key]+'-b.html';cp.style.display='';}else{cp.style.display='none';}
+  var cp=document.getElementById('cmPage');if(PAGE[key]){cp.href=PAGE[key];cp.style.display='';}else{cp.style.display='none';}
   lastFocus=document.activeElement;modal.classList.add('open');modal.setAttribute('aria-hidden','false');modal.querySelector('.modal-x').focus();document.body.style.overflow='hidden';
  }
  function closeM(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';if(lastFocus)lastFocus.focus();}
