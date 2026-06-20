@@ -26,7 +26,8 @@ section{padding:40px 20px;position:relative;z-index:1}
 /* ---- Navigation ---- */
 .nav{position:fixed;top:0;left:0;right:0;z-index:90;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:rgba(13,13,13,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(198,155,60,.18)}
 .nav-left{display:flex;align-items:center;gap:10px;min-width:0}
-.nav-logo{font-family:Cinzel,serif;color:var(--or);font-size:19px;font-weight:700;letter-spacing:.04em;text-decoration:none;white-space:nowrap}
+.nav-logo{display:inline-flex;align-items:center;gap:8px;font-family:Cinzel,serif;color:var(--or);font-size:19px;font-weight:700;letter-spacing:.04em;text-decoration:none;white-space:nowrap}
+.nav-logo img{height:30px;width:auto;display:block}
 .nav-home{display:inline-flex;align-items:center;gap:4px;font:600 12px Inter,sans-serif;color:var(--or);text-decoration:none;border:1px solid rgba(198,155,60,.45);border-radius:6px;padding:9px 13px;min-height:40px;white-space:nowrap;transition:background .25s}
 .nav-home:hover{background:rgba(198,155,60,.14)}
 .nav-links{display:none}

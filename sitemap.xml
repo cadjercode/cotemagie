@@ -2,44 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.cotemagie.fr/</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-06-18</lastmod>
   </url>
   <url>
     <loc>https://www.cotemagie.fr/close-up</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-18</lastmod>
   </url>
   <url>
     <loc>https://www.cotemagie.fr/spectacles-enfants</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-18</lastmod>
   </url>
   <url>
     <loc>https://www.cotemagie.fr/magie-aines</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-18</lastmod>
   </url>
   <url>
     <loc>https://www.cotemagie.fr/sculpture-ballons</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-18</lastmod>
   </url>
   <url>
     <loc>https://www.cotemagie.fr/ateliers-magie</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.cotemagie.fr/zone-intervention</loc>
+    <lastmod>2026-06-18</lastmod>
   </url>
   <url>
     <loc>https://www.cotemagie.fr/mentions-legales</loc>
     <lastmod>2026-06-17</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
   </url>
 </urlset>
