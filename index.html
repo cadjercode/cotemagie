@@ -68,7 +68,10 @@ a{color:var(--or)}
 /* ---------- Navigation ---------- */
 .nav{position:fixed;top:0;left:0;right:0;z-index:90;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:transparent;transition:background .3s,padding .3s,box-shadow .3s}
 .nav.solid{background:rgba(13,13,13,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:9px 20px;box-shadow:0 2px 20px rgba(0,0,0,.5);border-bottom:1px solid rgba(198,155,60,.18)}
-.nav-logo{display:inline-flex;align-items:center;gap:8px;font-family:Cinzel,serif;color:var(--or);font-size:20px;font-weight:700;letter-spacing:.05em;text-decoration:none}
+.nav-left{display:flex;align-items:center;gap:10px;min-width:0}
+.nav-logo{display:inline-flex;align-items:center;gap:8px;font-family:Cinzel,serif;color:var(--or);font-size:20px;font-weight:700;letter-spacing:.05em;text-decoration:none;white-space:nowrap}
+.nav-tagline{font-family:Inter,sans-serif;font-size:13px;font-weight:400;font-style:italic;color:var(--or2);opacity:.85;letter-spacing:.02em;white-space:nowrap}
+@media(max-width:768px){.nav-tagline{display:none}}
 .nav-logo img{height:30px;width:auto;display:block}
 .nav-links{display:none}
 .nav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px}
@@ -277,7 +280,10 @@ footer .sign{font-style:italic;color:var(--or2);margin-top:10px}
 <body>
 <a href="#main-content" class="skip" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:999;padding:12px;background:var(--or);color:#1A1206;font-weight:700;text-decoration:none" onfocus="this.style.cssText='position:fixed;left:16px;top:16px;width:auto;height:auto;overflow:visible;z-index:999;padding:12px;background:var(--or);color:#1A1206;font-weight:700;text-decoration:none;border-radius:6px'" onblur="this.style.cssText='position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden'">Aller au contenu principal</a>
 <nav class="nav" id="nav">
- <a href="#hero" class="nav-logo"><img src="images/logo-chapeau-magie-transparent.webp" alt="" width="34" height="30" decoding="async">Côté Magie</a>
+ <div class="nav-left">
+  <a href="#hero" class="nav-logo"><img src="images/logo-chapeau-magie-transparent.webp" alt="" width="34" height="30" decoding="async">Côté Magie</a>
+  <span class="nav-tagline">Des rires, des sourires et des souvenirs…</span>
+ </div>
  <div class="nav-links">
   <a href="#prestations">Prestations</a>
   <a href="#evenements">Événements</a>
@@ -323,8 +329,9 @@ footer .sign{font-style:italic;color:var(--or2);margin-top:10px}
  <p class="sign">Des rires, des sourires et des souvenirs…</p>
  <p class="exp">Plus de 25&nbsp;ans d'expérience — Issoudun &amp; Centre-Val de Loire</p>
  <div class="ctas">
-  <a class="btn btn-or" href="#contact">Demander un devis</a>
+  <a class="btn btn-or" href="#contact">Me contacter</a>
   <a class="btn btn-line" href="tel:+33672118229">06 72 11 82 29</a>
+  <a class="btn btn-line btn-wa" href="https://wa.me/33672118229" target="_blank" rel="noopener">WhatsApp</a>
  </div>
 </header>
 
@@ -351,31 +358,31 @@ footer .sign{font-style:italic;color:var(--or2);margin-top:10px}
   <div class="flip" role="button" tabindex="0" aria-expanded="false" aria-label="Close-up et magie de proximité — retourner la carte">
    <div class="flip-in">
     <div class="face front"><span class="hint">Toucher pour retourner</span><img src="images/close-up-tour-de-cartes.webp" alt="Tour de cartes en close-up" width="600" height="600" loading="lazy" decoding="async"><div class="fttl"><svg class="suit s-gold"><use href="#pique"/></svg><h3>Close-up &amp; proximité</h3></div></div>
-    <div class="face back"><h3>Close-up &amp; magie de proximité</h3><p>De table en table, au creux de la main de vos invités&nbsp;: cartes, pièces et objets prennent vie pendant vos cocktails, mariages et soirées d'entreprise.</p><button class="btn btn-line" type="button" data-presta="closeup">En savoir plus</button><a class="btn btn-or" href="#contact">Demander un devis</a></div>
+    <div class="face back"><h3>Close-up &amp; magie de proximité</h3><p>De table en table, au creux de la main de vos invités&nbsp;: cartes, pièces et objets prennent vie pendant vos cocktails, mariages et soirées d'entreprise.</p><button class="btn btn-line" type="button" data-presta="closeup">En savoir plus</button><a class="btn btn-or" href="#contact">Me contacter</a></div>
    </div>
   </div>
   <div class="flip" role="button" tabindex="0" aria-expanded="false" aria-label="Spectacles enfants — retourner la carte">
    <div class="flip-in">
     <div class="face front"><span class="hint">Toucher pour retourner</span><img src="images/enfants-emerveilles-spectacle-magie.webp" alt="Enfants émerveillés pendant un spectacle de magie" width="600" height="450" loading="lazy" decoding="async"><div class="fttl"><svg class="suit s-red"><use href="#coeur"/></svg><h3>Spectacles enfants</h3></div></div>
-    <div class="face back"><h3>Spectacles enfants</h3><p>Anniversaires, arbres de Noël, écoles et centres de loisirs&nbsp;: un spectacle interactif où les enfants deviennent les héros de la magie.</p><button class="btn btn-line" type="button" data-presta="enfants">En savoir plus</button><a class="btn btn-or" href="#contact">Demander un devis</a></div>
+    <div class="face back"><h3>Spectacles enfants</h3><p>Anniversaires, arbres de Noël, écoles et centres de loisirs&nbsp;: un spectacle interactif où les enfants deviennent les héros de la magie.</p><button class="btn btn-line" type="button" data-presta="enfants">En savoir plus</button><a class="btn btn-or" href="#contact">Me contacter</a></div>
    </div>
   </div>
   <div class="flip" role="button" tabindex="0" aria-expanded="false" aria-label="Magie pour les aînés — retourner la carte">
    <div class="flip-in">
     <div class="face front"><span class="hint">Toucher pour retourner</span><img src="images/spectacle-magie-aines-maison-retraite.webp" alt="Spectacle de magie pour les aînés en maison de retraite" width="600" height="444" loading="lazy" decoding="async"><div class="fttl"><svg class="suit s-red"><use href="#carreau"/></svg><h3>Magie pour les aînés</h3></div></div>
-    <div class="face back"><h3>Magie pour les aînés</h3><p>EHPAD, maisons de retraite et clubs seniors&nbsp;: un moment de douceur, de souvenirs et d'émerveillement, adapté à chaque public.</p><button class="btn btn-line" type="button" data-presta="aines">En savoir plus</button><a class="btn btn-or" href="#contact">Demander un devis</a></div>
+    <div class="face back"><h3>Magie pour les aînés</h3><p>EHPAD, maisons de retraite et clubs seniors&nbsp;: un moment de douceur, de souvenirs et d'émerveillement, adapté à chaque public.</p><button class="btn btn-line" type="button" data-presta="aines">En savoir plus</button><a class="btn btn-or" href="#contact">Me contacter</a></div>
    </div>
   </div>
   <div class="flip" role="button" tabindex="0" aria-expanded="false" aria-label="Sculpture sur ballons — retourner la carte">
    <div class="flip-in">
     <div class="face front"><span class="hint">Toucher pour retourner</span><img src="images/sculptures-ballons-colores.webp" alt="Sculptures sur ballons colorées" width="600" height="514" loading="lazy" decoding="async"><div class="fttl"><svg class="suit s-gold"><use href="#trefle"/></svg><h3>Sculpture sur ballons</h3></div></div>
-    <div class="face back"><h3>Sculpture sur ballons</h3><p>Animaux, fleurs, personnages&nbsp;: des créations en ballons qui enchantent les animations, fêtes de village,&nbsp;…</p><button class="btn btn-line" type="button" data-presta="ballons">En savoir plus</button><a class="btn btn-or" href="#contact">Demander un devis</a></div>
+    <div class="face back"><h3>Sculpture sur ballons</h3><p>Animaux, fleurs, personnages&nbsp;: des créations en ballons qui enchantent les animations, fêtes de village,&nbsp;…</p><button class="btn btn-line" type="button" data-presta="ballons">En savoir plus</button><a class="btn btn-or" href="#contact">Me contacter</a></div>
    </div>
   </div>
   <div class="flip" role="button" tabindex="0" aria-expanded="false" aria-label="Ateliers de magie — retourner la carte">
    <div class="flip-in">
     <div class="face front"><span class="hint">Toucher pour retourner</span><img src="images/atelier-initiation-magie-enfants.webp" alt="Atelier d'initiation à la magie" width="600" height="600" loading="lazy" decoding="async"><div class="fttl"><svg class="suit s-gold"><use href="#pique"/></svg><h3>Ateliers de magie</h3></div></div>
-    <div class="face back"><h3>Ateliers de magie</h3><p>Des ateliers pour initier nos magiciens en herbe, avec des tours facilement réalisables — de quoi étonner la famille et les amis&nbsp;! Tours adaptés à l'âge des participants&nbsp;; mise en place facile dans toutes les structures accueillant des enfants.</p><button class="btn btn-line" type="button" data-presta="ateliers">En savoir plus</button><a class="btn btn-or" href="#contact">Demander un devis</a></div>
+    <div class="face back"><h3>Ateliers de magie</h3><p>Des ateliers pour initier nos magiciens en herbe, avec des tours facilement réalisables — de quoi étonner la famille et les amis&nbsp;! Tours adaptés à l'âge des participants&nbsp;; mise en place facile dans toutes les structures accueillant des enfants.</p><button class="btn btn-line" type="button" data-presta="ateliers">En savoir plus</button><a class="btn btn-or" href="#contact">Me contacter</a></div>
    </div>
   </div>
  </div>

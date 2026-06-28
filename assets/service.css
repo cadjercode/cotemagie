@@ -28,6 +28,7 @@ section{padding:40px 20px;position:relative;z-index:1}
 .nav-left{display:flex;align-items:center;gap:10px;min-width:0}
 .nav-logo{display:inline-flex;align-items:center;gap:8px;font-family:Cinzel,serif;color:var(--or);font-size:19px;font-weight:700;letter-spacing:.04em;text-decoration:none;white-space:nowrap}
 .nav-logo img{height:30px;width:auto;display:block}
+.nav-tagline{font-family:Inter,sans-serif;font-size:13px;font-weight:400;font-style:italic;color:var(--ivoire);opacity:.6;letter-spacing:.02em;white-space:nowrap}
 .nav-home{display:inline-flex;align-items:center;gap:4px;font:600 12px Inter,sans-serif;color:var(--or);text-decoration:none;border:1px solid rgba(198,155,60,.45);border-radius:6px;padding:9px 13px;min-height:40px;white-space:nowrap;transition:background .25s}
 .nav-home:hover{background:rgba(198,155,60,.14)}
 .nav-links{display:none}
@@ -100,4 +101,5 @@ footer .sign{font-style:italic;color:var(--or2);margin-top:10px}
  .rv{opacity:1!important;transform:none!important}
 }
 @media(min-width:680px){.sgal{grid-template-columns:repeat(4,1fr);gap:12px}.others-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.nav-tagline{display:none}}
 @media(min-width:768px){section{padding:56px 32px}}
