@@ -66,8 +66,7 @@ a{color:var(--or)}
 .btn-line{border:1.5px solid var(--or);color:var(--or);background:rgba(13,13,13,.4)}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(198,155,60,.25)}
 /* ---------- Navigation ---------- */
-.nav{position:fixed;top:0;left:0;right:0;z-index:90;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:transparent;transition:background .3s,padding .3s,box-shadow .3s}
-.nav.solid{background:rgba(13,13,13,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:9px 20px;box-shadow:0 2px 20px rgba(0,0,0,.5);border-bottom:1px solid rgba(198,155,60,.18)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:90;display:flex;align-items:center;justify-content:space-between;padding:9px 20px;background:rgba(13,13,13,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,.5);border-bottom:1px solid rgba(198,155,60,.18)}
 .nav-left{display:flex;align-items:center;gap:10px;min-width:0}
 .nav-logo{display:inline-flex;align-items:center;gap:8px;font-family:Cinzel,serif;color:var(--or);font-size:20px;font-weight:700;letter-spacing:.05em;text-decoration:none;white-space:nowrap}
 .nav-tagline{font-family:Inter,sans-serif;font-size:13px;font-weight:400;font-style:italic;color:var(--or2);opacity:.85;letter-spacing:.02em;white-space:nowrap}
@@ -627,9 +626,7 @@ footer .sign{font-style:italic;color:var(--or2);margin-top:10px}
  /* ---- FAB ---- */
  var fab=document.getElementById('fab');
  new IntersectionObserver(function(es){fab.classList.toggle('show',!es[0].isIntersecting);}).observe(document.getElementById('hero'));
- /* Nav : fond au scroll + menu mobile */
- var nav=document.getElementById('nav');
- new IntersectionObserver(function(es){nav.classList.toggle('solid',!es[0].isIntersecting);},{rootMargin:'-60px 0px 0px 0px'}).observe(document.getElementById('hero'));
+ /* Nav : menu mobile */
  var burger=document.getElementById('navBurger'),navMobile=document.getElementById('navMobile'),navOverlay=document.getElementById('navOverlay');
  function closeNav(){burger.classList.remove('open');navMobile.classList.remove('open');navOverlay.classList.remove('open');burger.setAttribute('aria-expanded','false');}
  burger.addEventListener('click',function(){var o=!navMobile.classList.contains('open');navMobile.classList.toggle('open',o);burger.classList.toggle('open',o);navOverlay.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);});
