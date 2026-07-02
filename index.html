@@ -227,7 +227,11 @@ input:focus,select:focus,textarea:focus{border-color:var(--or)}
 textarea{min-height:110px;resize:vertical}
 input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible,button:focus-visible,.flip:focus-visible{outline:2px solid var(--or);outline-offset:2px}
 .ct-card form .btn{border:none;width:100%}
+.ct-card form .btn:disabled{opacity:.6;cursor:wait}
 .reassur{text-align:center;color:var(--sec);font-size:14px}
+#formFeedback{text-align:center;padding:10px 14px;border-radius:8px;font-size:15px;font-weight:600;display:none}
+#formFeedback.ok{display:block;background:rgba(46,160,67,.15);border:1px solid rgba(46,160,67,.5);color:#2ea043}
+#formFeedback.err{display:block;background:rgba(198,40,40,.15);border:1px solid rgba(198,40,40,.5);color:#ef5350}
 .ct-info{display:flex;flex-direction:column;gap:20px;justify-content:center}
 .ct-item{display:flex;gap:14px;align-items:flex-start}
 .ct-ico{width:44px;height:44px;background:rgba(198,155,60,.12);border:1px solid rgba(198,155,60,.3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
@@ -543,20 +547,19 @@ footer .sign{font-style:italic;color:var(--or2);margin-top:10px}
  <p class="sub">Parlez-nous de votre événement&nbsp;: Francis vous répond personnellement.</p>
  <div class="ct-grid">
   <div class="ct-card">
-   <form action="https://formsubmit.co/cotemagie@gmail.com" method="POST">
-    <input type="hidden" name="_subject" value="Nouvelle demande de devis — cotemagie.fr">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="box">
+   <form id="contactForm" action="/send-mail.php" method="POST">
     <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
     <div><label for="nom">Votre nom</label><input id="nom" name="nom" type="text" autocomplete="name" required></div>
-    <div><label for="tel">Téléphone ou e-mail</label><input id="tel" name="contact" type="text" inputmode="tel" autocomplete="tel" required></div>
+    <div><label for="tel">Téléphone</label><input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 00 00 00 00"></div>
+    <div><label for="email">E-mail</label><input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="votre@email.com"></div>
     <div><label for="type">Type d'événement</label>
      <select id="type" name="evenement" required>
       <option value="">Choisissez…</option><option>Mariage</option><option>Anniversaire</option><option>Entreprise / CE / séminaire</option><option>École / centre de loisirs</option><option>EHPAD / seniors</option><option>Fête de village / collectivité</option><option>Autre</option>
      </select>
     </div>
     <div><label for="msg">Votre message</label><textarea id="msg" name="message" placeholder="Date, lieu, nombre d'invités…"></textarea></div>
-    <button class="btn btn-or" type="submit">Envoyer</button>
+    <button class="btn btn-or" type="submit" id="contactBtn">Envoyer</button>
+    <div id="formFeedback" role="status" aria-live="polite"></div>
     <p class="reassur">Devis gratuit — appelez directement le <a href="tel:+33672118229">06&nbsp;72&nbsp;11&nbsp;82&nbsp;29</a>.</p>
    </form>
   </div>
@@ -677,6 +680,25 @@ footer .sign{font-style:italic;color:var(--or2);margin-top:10px}
  document.querySelectorAll('[data-presta]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();openM(b.getAttribute('data-presta'));});});
  document.querySelectorAll('[data-close-modal]').forEach(function(b){b.addEventListener('click',closeM);});
  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('open'))closeM();});
+ /* ---- Formulaire AJAX ---- */
+ var cForm=document.getElementById('contactForm'),cBtn=document.getElementById('contactBtn'),cFb=document.getElementById('formFeedback');
+ cForm.addEventListener('submit',function(e){
+  e.preventDefault();
+  var tel=cForm.tel.value.trim(),email=cForm.email.value.trim();
+  if(!tel&&!email){cFb.className='err';cFb.textContent='Merci de renseigner un téléphone ou un e-mail.';cFb.style.display='';return;}
+  cBtn.disabled=true;cBtn.textContent='Envoi en cours…';cFb.className='';cFb.style.display='';
+  fetch('/send-mail.php',{method:'POST',body:new FormData(cForm)})
+  .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
+  .then(function(res){
+   if(res.ok&&res.data.ok){
+    cFb.className='ok';cFb.style.display='';cFb.textContent='Message envoyé ! Francis vous répondra rapidement.';cForm.reset();
+   }else{
+    cFb.className='err';cFb.style.display='';cFb.textContent=res.data.error||'Une erreur est survenue, réessayez ou appelez directement.';
+   }
+  })
+  .catch(function(){cFb.className='err';cFb.style.display='';cFb.textContent='Erreur réseau — réessayez ou appelez le 06 72 11 82 29.';})
+  .finally(function(){cBtn.disabled=false;cBtn.textContent='Envoyer';});
+ });
  /* ---- Galerie voir plus / masquer ---- */
  var galMore=document.getElementById('galMore'),galBtn=document.getElementById('galBtn');
  galBtn.addEventListener('click',function(){

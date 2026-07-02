@@ -55,5 +55,15 @@ ErrorDocument 404 /404.html
   Require all denied
 </FilesMatch>
 
+# === Protect send-mail.php: allow POST only ===
+<Files "send-mail.php">
+  <Limit GET HEAD OPTIONS>
+    Require all denied
+  </Limit>
+  <Limit POST>
+    Require all granted
+  </Limit>
+</Files>
+
 # === Prevent directory listing ===
 Options -Indexes
