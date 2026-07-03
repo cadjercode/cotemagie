@@ -628,8 +628,10 @@ footer .sign{font-style:italic;color:var(--or2);margin-top:10px}
  var ioEv=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ioEv.unobserve(e.target);}});},{threshold:.2});
  document.querySelectorAll('.ev-card').forEach(function(c){ioEv.observe(c);});
  /* ---- FAB ---- */
- var fab=document.getElementById('fab');
- new IntersectionObserver(function(es){fab.classList.toggle('show',!es[0].isIntersecting);}).observe(document.getElementById('hero'));
+ var fab=document.getElementById('fab'),fabHero=true,fabContact=false;
+ function fabUpd(){fab.classList.toggle('show',!fabHero&&!fabContact);}
+ new IntersectionObserver(function(es){fabHero=es[0].isIntersecting;fabUpd();}).observe(document.getElementById('hero'));
+ new IntersectionObserver(function(es){fabContact=es[0].isIntersecting;fabUpd();}).observe(document.getElementById('contact'));
  /* Nav : fond au scroll + menu mobile */
  var nav=document.getElementById('nav');
  window.addEventListener('scroll',function(){nav.classList.toggle('solid',window.scrollY>30);},{passive:true});
