@@ -1,11 +1,17 @@
 # === HTTPS & WWW Redirect (canonical = https://www.cotemagie.fr) ===
 RewriteEngine On
 
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://www.cotemagie.fr/$1 [R=301,L]
-
+# Une seule règle pour HTTPS + www : évite la chaîne à 2 sauts
+# (http://cotemagie.fr -> https://cotemagie.fr -> https://www.cotemagie.fr)
+RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteRule ^(.*)$ https://www.cotemagie.fr/$1 [R=301,L]
+
+# === Anciennes URL Wix encore indexées ===
+RewriteRule ^plan1/?$ / [R=301,L]
+RewriteRule ^blank/?$ / [R=301,L]
+RewriteRule ^decouvrez-la-magie-avec-cote-magie/?$ / [R=301,L]
+RewriteRule ^post/ /ateliers-magie [R=301,L]
 
 # === Clean URLs (serve .html without extension) ===
 RewriteCond %{REQUEST_FILENAME} !-d

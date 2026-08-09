@@ -27,3 +27,4 @@ images/*.jpeg
 
 # Exception : image OG sociale (JPG requis, lue par Facebook/LinkedIn)
 !images/og-cotemagie.jpg
+.gstack/

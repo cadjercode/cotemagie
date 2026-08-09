@@ -59,6 +59,11 @@
   }
   ctx.globalAlpha=1; ctx.globalCompositeOperation='source-over';
  }
+ /* Sur les pages prestations, #webgl est en position:fixed : l'IntersectionObserver le voit
+    toujours à l'écran et la pause ne se déclencherait jamais. On coupe donc aussi le rendu
+    quand l'onglet est masqué ou quand on a scrollé bien au-delà du premier écran. */
  if(reduce){draw(false);}
- else{(function loop(){requestAnimationFrame(loop);if(!inView)return;t+=.016;cx+=(mx-cx)*.04;cy+=(my-cy)*.04;draw(true);})();}
+ else{(function loop(){requestAnimationFrame(loop);
+  if(!inView||document.hidden||window.scrollY>window.innerHeight*1.2)return;
+  t+=.016;cx+=(mx-cx)*.04;cy+=(my-cy)*.04;draw(true);})();}
 })();
