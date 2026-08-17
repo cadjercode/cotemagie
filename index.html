@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Côté Magie — Francis Darcy, magicien à Issoudun</title>
-<meta name="description" content="Francis Darcy, magicien professionnel à Issoudun (Indre) — close-up, spectacles enfants, magie pour les aînés, sculpture sur ballons, ateliers. Centre-Val de Loire.">
+<meta name="description" content="Francis Darcy, magicien professionnel à Issoudun (Indre) : close-up, spectacles enfants, magie aînés, sculpture sur ballons, ateliers. Centre-Val de Loire.">
 <link rel="canonical" href="https://www.cotemagie.fr/">
 <meta name="author" content="Francis Darcy — Côté Magie">
 <meta name="geo.region" content="FR-36">
@@ -577,11 +577,11 @@ footer .sign{font-style:italic;color:var(--or2);margin-top:10px}
  Appeler
 </a>
 
-<div class="modal" id="closeupModal" role="dialog" aria-modal="true" aria-labelledby="cmTitle" aria-hidden="true">
+<div class="modal" id="closeupModal" role="dialog" aria-modal="true" aria-labelledby="cmTitle">
  <div class="modal-bg" data-close-modal></div>
  <div class="modal-box">
   <button class="modal-x" type="button" data-close-modal aria-label="Fermer">✕</button>
-  <h3 id="cmTitle"></h3>
+  <h3 id="cmTitle">Détail de la prestation</h3>
   <div class="modal-pics" id="cmPics"></div>
   <div id="cmBody"></div>
   <div class="modal-actions">
@@ -663,9 +663,26 @@ footer .sign{font-style:italic;color:var(--or2);margin-top:10px}
   var PAGE={closeup:'close-up',enfants:'spectacles-enfants',aines:'magie-aines',ballons:'sculpture-ballons',ateliers:'ateliers-magie'};
   document.getElementById('cmBody').innerHTML=d.b.map(function(t){return '<p>'+t+'</p>';}).join('');
   var cp=document.getElementById('cmPage');if(PAGE[key]){cp.href=PAGE[key];cp.style.display='';}else{cp.style.display='none';}
-  lastFocus=document.activeElement;modal.classList.add('open');modal.setAttribute('aria-hidden','false');modal.querySelector('.modal-x').focus();document.body.style.overflow='hidden';
+  lastFocus=document.activeElement;modal.classList.add('open');bgInert(true);modal.querySelector('.modal-x').focus();document.body.style.overflow='hidden';
  }
- function closeM(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';if(lastFocus)lastFocus.focus();}
+ function closeM(){modal.classList.remove('open');bgInert(false);document.body.style.overflow='';if(lastFocus)lastFocus.focus();}
+ /* Le reste de la page devient inerte : le focus et les lecteurs d'écran restent dans la modale.
+    La modale fermée est en display:none, donc déjà hors de l'arbre d'accessibilité — pas besoin d'aria-hidden. */
+ function bgInert(on){
+  Array.prototype.forEach.call(document.body.children,function(el){
+   if(el===modal||el.tagName==='SCRIPT')return;
+   if(on)el.setAttribute('inert','');else el.removeAttribute('inert');
+  });
+ }
+ /* Repli pour les navigateurs sans support de inert */
+ var FOCUSABLE='a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])';
+ document.addEventListener('keydown',function(e){
+  if(e.key!=='Tab'||!modal.classList.contains('open'))return;
+  var f=modal.querySelectorAll(FOCUSABLE);if(!f.length)return;
+  var first=f[0],last=f[f.length-1];
+  if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+  else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+ });
  /* Les liens "En savoir plus" pointent vers la vraie page (crawlable) mais ouvrent la modale au clic simple.
     Ctrl/cmd/clic milieu et clic droit conservent la navigation classique. */
  document.querySelectorAll('[data-presta]').forEach(function(b){b.addEventListener('click',function(e){
