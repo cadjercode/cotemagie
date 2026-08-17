@@ -107,4 +107,6 @@ footer .sign{font-style:italic;color:var(--or2);margin-top:10px}
 }
 @media(min-width:680px){.sgal{grid-template-columns:repeat(4,1fr);gap:12px}.others-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.nav-tagline{display:none}}
+/* Sous 380px, le bouton retour chevauche le logo. Il est redondant : logo cliquable, fil d'Ariane et menu burger mènent tous à l'accueil. */
+@media(max-width:380px){.nav-home{display:none}}
 @media(min-width:768px){section{padding:56px 32px}}
