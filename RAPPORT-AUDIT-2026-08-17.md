@@ -4,9 +4,11 @@
 
 Audit de la version du dépôt `hostinger-build` au commit `2ed4d41`, également vérifiée sur `https://www.cotemagie.fr/` le 17 août 2026.
 
-Le site est techniquement rapide, bien indexable et globalement propre. Les scores Lighthouse synthétiques sont excellents. Il reste toutefois un défaut responsive majeur, invisible dans Lighthouse : le contenu principal est tronqué sur mobile. Une mise en conformité RGPD du formulaire et de la carte Google est également à prévoir.
+Le site est techniquement rapide, bien indexable et globalement propre. Les scores Lighthouse synthétiques sont excellents. La priorité réelle est une mise en conformité RGPD du formulaire et de la carte Google. Un chevauchement du header reste aussi à corriger à 320 px sur les pages de prestation.
 
-**Verdict : bon socle, mais correction mobile prioritaire avant de considérer la version comme finalisée.**
+**Verdict : très bon socle technique; corriger en priorité la transparence RGPD, puis le header à 320 px.**
+
+> **Rectificatif du 17 août 2026.** La première version de ce rapport signalait à tort un hero tronqué sur mobile. Cette conclusion provenait de captures Chrome lancées sans synchronisation correcte sous Windows. Une contre-mesure avec Puppeteer, viewport CSS explicite et lecture du DOM confirme l'absence de débordement du hero à 320, 360, 390, 768 et 1024 px sur l'accueil et `/close-up` : `scrollWidth === clientWidth` et les rectangles du contenu restent dans le viewport. La recommandation associée a été retirée.
 
 ## Résultats mesurés
 
@@ -39,16 +41,6 @@ Ces résultats sont des mesures de laboratoire ponctuelles. Ils ne remplacent pa
 
 ## Problèmes prioritaires
 
-### P1 — Hero tronqué sur mobile
-
-**Constat.** À 390 × 844 px, l'accueil et les pages de prestation débordent à droite : le nom de marque, le H1, la phrase d'accroche, le fil d'Ariane et certains boutons sont partiellement invisibles. Le même risque est encore plus fort à 320 px.
-
-**Cause probable.** Les héros utilisent un conteneur flex centré dont les enfants gardent leur largeur intrinsèque. Les grandes chaînes en Cinzel et les groupes de CTA ne sont pas suffisamment contraints. `overflow-x:hidden` sur `body` masque le débordement au lieu de le résoudre (`index.html:49`, `assets/service.css:7`).
-
-**Impact.** Message commercial et CTA incomplets sur mobile, mauvaise première impression et perte potentielle de conversion. Lighthouse ne pénalise pas ce défaut visuel et affiche donc malgré tout 100/100.
-
-**Correction recommandée.** Contraindre les enfants des héros avec `width:100%`, `min-width:0` et une largeur maximale; autoriser les retours de mots; réduire la taille et l'espacement des lettres sous 480 px; empiler les CTA sur les petits écrans et donner aux boutons une largeur compatible avec le viewport. Retester visuellement à 320, 360, 390, 768 et 1024 px sans se fier uniquement à Lighthouse.
-
 ### P1 — Information RGPD incomplète et contenu tiers incohérent
 
 **Constat.** La politique indique qu'aucune donnée n'est transmise à un service externe (`mentions-legales.html:85`), alors que la carte Google est chargée dès l'affichage (`index.html:545`). Elle mentionne aussi Google Fonts comme ressource externe (`mentions-legales.html:89`), bien que les polices soient désormais auto-hébergées.
@@ -64,6 +56,14 @@ Références :
 - CNIL — [Exemples de formulaire de collecte](https://www.cnil.fr/fr/exemples-de-formulaire-de-collecte-de-donnees-caractere-personnel)
 - CNIL — [Informer les personnes](https://www.cnil.fr/fr/informer-les-personnes)
 - CNIL — [Contenus externes et consentement aux traceurs](https://www.cnil.fr/fr/questions-reponses-lignes-directrices-modificatives-et-recommandation-cookies-traceurs)
+
+### P2 — Chevauchement du header à 320 px sur les pages de prestation
+
+**Constat.** À 320 px, le logo « Côté Magie » et le bouton « ← Accueil » se chevauchent dans le header des pages de prestation. La boîte du lien logo est comprimée à environ 140 px, mais son texte en `white-space:nowrap` continue visuellement jusqu'au bouton. Le menu burger occupe également la même ligne. Le défaut n'est plus présent à partir de 360 px.
+
+**Impact.** Lisibilité et finition visuelle dégradées sur les téléphones les plus étroits.
+
+**Correction recommandée.** Ajouter une règle ciblée sous 340 px : masquer le bouton « Accueil » ou abréger/masquer le texte du logo, tout en conservant le burger comme voie de navigation. Valider le résultat à 320 et 360 px.
 
 ### P2 — Modale perfectible au clavier et en accessibilité
 
@@ -110,8 +110,8 @@ Les descriptions de l'accueil (164 caractères) et de la page Ateliers (163) peu
 
 ## Ordre de correction proposé
 
-1. Corriger le débordement du hero et valider les cinq largeurs responsive.
-2. Mettre à jour la politique RGPD et le chargement Google Maps.
+1. Mettre à jour la politique RGPD et le chargement Google Maps.
+2. Corriger le chevauchement du header à 320 px.
 3. Sécuriser davantage le formulaire contre le spam.
 4. Corriger la modale et les erreurs HTML pertinentes.
 5. Mettre à jour le sitemap, le MIME du manifest et la chaîne de redirection HTTP.
@@ -123,6 +123,7 @@ Les descriptions de l'accueil (164 caractères) et de la page Ateliers (163) peu
 - Vérification des redirections HTTPS, `www`, `.html` et anciennes URL Wix.
 - Lighthouse 13.4.1 mobile et desktop sur la page d'accueil en production.
 - Captures visuelles desktop et mobile de l'accueil et d'une page de prestation.
+- Contre-vérification responsive avec Puppeteer : viewports CSS 320, 360, 390, 768 et 1024 px, mesures `scrollWidth`/`clientWidth` et rectangles DOM.
 - Analyse statique des titres, descriptions, H1, canonicals, images, identifiants, liens locaux et JSON-LD.
 - Validation HTML avec `html-validate`.
 - Revue manuelle du formulaire PHP, du JavaScript, de `.htaccess`, des en-têtes HTTP et des mentions légales.
