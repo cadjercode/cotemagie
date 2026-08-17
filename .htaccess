@@ -12,6 +12,7 @@ RewriteRule ^plan1/?$ / [R=301,L]
 RewriteRule ^blank/?$ / [R=301,L]
 RewriteRule ^decouvrez-la-magie-avec-cote-magie/?$ / [R=301,L]
 RewriteRule ^post/ /ateliers-magie [R=301,L]
+RewriteRule ^actualit.*$ / [R=301,L]
 
 # === Clean URLs (serve .html without extension) ===
 RewriteCond %{REQUEST_FILENAME} !-d
