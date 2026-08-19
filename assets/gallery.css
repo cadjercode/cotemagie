@@ -1,0 +1,36 @@
+/* ============================================================
+   Côté Magie — Galerie photo + Lightbox
+   ============================================================ */
+
+/* ---- Grille galerie ---- */
+.gallery{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:0 20px}
+.gallery-item{position:relative;overflow:hidden;border-radius:6px;cursor:pointer;aspect-ratio:1;border:1px solid rgba(198,155,60,.2);transition:border-color .3s,transform .3s}
+.gallery-item:hover{border-color:var(--or);transform:scale(1.03);z-index:2}
+.gallery-item:focus-visible{outline:2px solid var(--or);outline-offset:2px}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .4s}
+.gallery-item img[data-src]{opacity:0}
+.gallery-item img.loaded{opacity:1}
+
+/* ---- Lightbox overlay ---- */
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(6,6,6,.94);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.lightbox.open{opacity:1;pointer-events:auto}
+.lightbox-img-wrap{position:relative;max-width:90vw;max-height:85vh;display:flex;align-items:center;justify-content:center}
+.lightbox-img-wrap img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:8px;box-shadow:0 12px 48px rgba(0,0,0,.6);opacity:0;transition:opacity .3s}
+.lightbox-img-wrap img.lb-loaded{opacity:1}
+
+/* ---- Lightbox contrôles ---- */
+.lb-close{position:fixed;top:16px;right:16px;z-index:210;width:48px;height:48px;border:none;background:rgba(198,155,60,.15);color:var(--or);font-size:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s}
+.lb-close:hover{background:rgba(198,155,60,.35)}
+.lb-prev,.lb-next{position:fixed;top:50%;z-index:210;width:48px;height:48px;border:none;background:rgba(198,155,60,.12);color:var(--or);font-size:24px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s,transform .2s}
+.lb-prev{left:12px;transform:translateY(-50%)}
+.lb-next{right:12px;transform:translateY(-50%)}
+.lb-prev:hover,.lb-next:hover{background:rgba(198,155,60,.35)}
+.lb-counter{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:210;color:var(--sec);font:400 14px Inter,sans-serif;letter-spacing:.06em;background:rgba(13,13,13,.7);padding:6px 16px;border-radius:20px}
+
+/* ---- Responsive ---- */
+@media(min-width:520px){.gallery{grid-template-columns:repeat(4,1fr);gap:8px}}
+@media(min-width:900px){.gallery{grid-template-columns:repeat(5,1fr);gap:10px}}
+@media(max-width:519px){.lb-prev{left:4px}.lb-next{right:4px}.lb-prev,.lb-next{width:40px;height:40px;font-size:20px}}
+
+/* ---- Reduced motion ---- */
+@media(prefers-reduced-motion:reduce){.gallery-item,.gallery-item img,.lightbox,.lightbox-img-wrap img{transition:none!important}}

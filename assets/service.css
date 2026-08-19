@@ -70,6 +70,7 @@ section{padding:40px 20px;position:relative;z-index:1}
 .prose ul{margin:16px 0 16px 4px;list-style:none}
 .prose li{padding:6px 0 6px 22px;position:relative}
 .prose li::before{content:"♦";position:absolute;left:0;top:6px;color:var(--or);font-size:12px}
+.sub{text-align:center;color:var(--sec);max-width:65ch;margin:0 auto 24px}
 /* ---- Galerie ---- */
 .sgal{display:grid;gap:8px;grid-template-columns:repeat(3,1fr);max-width:920px;margin:0 auto}
 .sgal img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:8px;border:1px solid rgba(198,155,60,.25)}
