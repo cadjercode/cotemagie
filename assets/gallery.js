@@ -29,6 +29,53 @@
     }
   });
 
+  /* ---- Video modal (RGPD-friendly: no YouTube request until click) ---- */
+  var vm = document.createElement('div');
+  vm.className = 'video-modal';
+  vm.setAttribute('role', 'dialog');
+  vm.setAttribute('aria-modal', 'true');
+  vm.setAttribute('aria-label', 'Vidéo');
+  vm.innerHTML = '<div class="video-modal-inner"><button class="vm-close" aria-label="Fermer">&times;</button></div>';
+  document.body.appendChild(vm);
+
+  var vmInner = vm.querySelector('.video-modal-inner');
+
+  function openVideo(ytId) {
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube-nocookie.com/embed/' + ytId + '?autoplay=1&rel=0';
+    iframe.setAttribute('allow', 'autoplay; encrypted-media');
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.title = 'Vidéo close-up Côté Magie';
+    vmInner.appendChild(iframe);
+    vm.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    vm.querySelector('.vm-close').focus();
+  }
+
+  function closeVideo() {
+    vm.classList.remove('open');
+    document.body.style.overflow = '';
+    var iframe = vmInner.querySelector('iframe');
+    if (iframe) iframe.remove();
+  }
+
+  vm.querySelector('.vm-close').addEventListener('click', closeVideo);
+  vm.addEventListener('click', function (e) { if (e.target === vm) closeVideo(); });
+
+  document.querySelectorAll('.gallery-item.video-item').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var ytId = el.getAttribute('data-youtube');
+      if (ytId && ytId.indexOf('YOUTUBE_ID') === -1) openVideo(ytId);
+    });
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        var ytId = el.getAttribute('data-youtube');
+        if (ytId && ytId.indexOf('YOUTUBE_ID') === -1) openVideo(ytId);
+      }
+    });
+  });
+
   /* ---- Build lightbox DOM ---- */
   var lb = document.createElement('div');
   lb.className = 'lightbox';
@@ -45,7 +92,7 @@
 
   var lbImg = lb.querySelector('.lightbox-img-wrap img');
   var lbCounter = lb.querySelector('.lb-counter');
-  var items = Array.prototype.slice.call(document.querySelectorAll('.gallery-item'));
+  var items = Array.prototype.slice.call(document.querySelectorAll('.gallery-item:not(.video-item)'));
   var current = 0;
   var touchStartX = 0;
   var touchStartY = 0;
@@ -99,6 +146,7 @@
   });
 
   document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && vm.classList.contains('open')) { closeVideo(); return; }
     if (!lb.classList.contains('open')) return;
     if (e.key === 'Escape') closeLb();
     else if (e.key === 'ArrowLeft') prev();

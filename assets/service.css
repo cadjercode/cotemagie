@@ -66,7 +66,7 @@ section{padding:40px 20px;position:relative;z-index:1}
 .brief{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;margin:0 0 22px;padding:14px 16px;background:rgba(198,155,60,.07);border:1px solid rgba(198,155,60,.22);border-radius:10px;font-size:15px;line-height:1.5}
 .brief b{font-family:Cinzel,serif;color:var(--or);font-weight:700;letter-spacing:.04em;font-size:13px;text-transform:uppercase}
 .brief span{color:var(--ivoire)}
-.brief span+span::before{content:"·";color:var(--or);margin-right:10px;opacity:.7}
+.brief span+span::before{content:"•";color:var(--or);margin:0 4px 0 0;font-size:16px}
 .prose ul{margin:16px 0 16px 4px;list-style:none}
 .prose li{padding:6px 0 6px 22px;position:relative}
 .prose li::before{content:"♦";position:absolute;left:0;top:6px;color:var(--or);font-size:12px}
