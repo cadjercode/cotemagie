@@ -40,12 +40,13 @@
 
   var vmInner = vm.querySelector('.video-modal-inner');
 
-  function openVideo(ytId) {
+  function openVideo(ytId, isLandscape) {
+    vmInner.classList.toggle('landscape', !!isLandscape);
     var iframe = document.createElement('iframe');
     iframe.src = 'https://www.youtube-nocookie.com/embed/' + ytId + '?autoplay=1&rel=0';
     iframe.setAttribute('allow', 'autoplay; encrypted-media');
     iframe.setAttribute('allowfullscreen', '');
-    iframe.title = 'Vidéo close-up Côté Magie';
+    iframe.title = 'Vidéo Côté Magie';
     vmInner.appendChild(iframe);
     vm.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -65,13 +66,13 @@
   document.querySelectorAll('.gallery-item.video-item').forEach(function (el) {
     el.addEventListener('click', function () {
       var ytId = el.getAttribute('data-youtube');
-      if (ytId && ytId.indexOf('YOUTUBE_ID') === -1) openVideo(ytId);
+      if (ytId && ytId.indexOf('YOUTUBE_ID') === -1) openVideo(ytId, el.classList.contains('landscape'));
     });
     el.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         var ytId = el.getAttribute('data-youtube');
-        if (ytId && ytId.indexOf('YOUTUBE_ID') === -1) openVideo(ytId);
+        if (ytId && ytId.indexOf('YOUTUBE_ID') === -1) openVideo(ytId, el.classList.contains('landscape'));
       }
     });
   });
