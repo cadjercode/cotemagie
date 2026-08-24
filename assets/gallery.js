@@ -43,7 +43,7 @@
   function openVideo(ytId, isLandscape) {
     vmInner.classList.toggle('landscape', !!isLandscape);
     var iframe = document.createElement('iframe');
-    iframe.src = 'https://www.youtube-nocookie.com/embed/' + ytId + '?autoplay=1&rel=0';
+    iframe.src = 'https://www.youtube-nocookie.com/embed/' + ytId + '?autoplay=1&rel=0&mute=0&playsinline=1';
     iframe.setAttribute('allow', 'autoplay; encrypted-media');
     iframe.setAttribute('allowfullscreen', '');
     iframe.title = 'Vidéo Côté Magie';
