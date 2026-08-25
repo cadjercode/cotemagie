@@ -436,13 +436,13 @@ footer .sign{font-style:italic;color:var(--or2);margin-top:10px}
   <img src="images/gallery/ballons/full/ballons-10.webp" alt="Francis Darcy entouré de sculptures sur ballons colorées, sapin de Noël" loading="lazy" decoding="async">
   <img src="images/gallery/ateliers/full/ateliers-01.webp" alt="Atelier de magie en médiathèque : les enfants découvrent un tour" loading="lazy" decoding="async">
   <img src="images/gallery/close-up/full/close-up-05.webp" alt="Close-up de proximité : Francis Darcy fait un tour de cartes devant trois convives souriantes" loading="lazy" decoding="async">
+  <img src="images/gallery/enfants/full/enfants-01.webp" alt="Francis Darcy sur scène, tour de la balle magique devant un décor de cartes" loading="lazy" decoding="async">
+  <img src="images/gallery/close-up/full/close-up-01.webp" alt="Close-up lors d'un mariage en extérieur à Issoudun" loading="lazy" decoding="async">
  </div>
  <div class="gal gal-more" id="galMore">
-  <img src="images/gallery/close-up/full/close-up-01.webp" alt="Close-up lors d'un mariage en extérieur à Issoudun" loading="lazy" decoding="async">
   <img src="images/gallery/enfants/full/enfants-05.webp" alt="Spectacle enfants : les mains se lèvent dans le théâtre, Francis sur scène" loading="lazy" decoding="async">
   <img src="images/gallery/aines/full/aines-05.webp" alt="Spectacle de Noël intergénérationnel avec une résidente participante" loading="lazy" decoding="async">
   <img src="images/gallery/ballons/full/ballons-05.webp" alt="Francis Darcy sculptant un ballon bleu sur scène" loading="lazy" decoding="async">
-  <img src="images/gallery/enfants/full/enfants-01.webp" alt="Francis Darcy sur scène, tour de la balle magique devant un décor de cartes" loading="lazy" decoding="async">
   <img src="images/gallery/ateliers/full/ateliers-05.webp" alt="Atelier magie en bibliothèque : Francis et un apprenti magicien" loading="lazy" decoding="async">
  </div>
  <div class="gal-toggle">
@@ -727,7 +727,7 @@ footer .sign{font-style:italic;color:var(--or2);margin-top:10px}
  var galImgs=document.querySelectorAll('.gal img');
  var ioGal=new IntersectionObserver(function(es){es.forEach(function(e){
   if(e.isIntersecting){
-   var idx=Array.prototype.indexOf.call(galImgs,e.target)%6;
+   var idx=Array.prototype.indexOf.call(galImgs,e.target)%4;
    e.target.style.transitionDelay=(idx*80)+'ms';
    e.target.classList.add('gin');
    ioGal.unobserve(e.target);
