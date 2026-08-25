@@ -10,7 +10,7 @@ h2{font-size:clamp(24px,5.5vw,34px);margin-bottom:10px}
 img{display:block;max-width:100%}
 a{color:var(--or)}
 .wrap{max-width:920px;margin:0 auto;padding:0 20px}
-section{padding:40px 20px;position:relative;z-index:1}
+section{padding:30px 20px;position:relative;z-index:1}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 26px;border-radius:6px;font:600 16px Inter,sans-serif;text-decoration:none;transition:transform .2s,box-shadow .2s;cursor:pointer}
 .btn-or{background:linear-gradient(135deg,var(--orf),var(--or));color:#1A1206;border:none}
 .btn-line{border:1.5px solid var(--or);color:var(--or);background:rgba(13,13,13,.4)}
@@ -51,7 +51,7 @@ section{padding:40px 20px;position:relative;z-index:1}
  .nav-links a.nav-cta{margin-left:8px;min-height:40px;padding:9px 18px;color:#1A1206;text-transform:none;font-size:14px;opacity:1;background:linear-gradient(135deg,var(--orf),var(--or));border-radius:6px}
 }
 /* ---- Hero prestation ---- */
-.shero{min-height:62svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:110px 20px 56px;background:radial-gradient(120% 80% at 50% 0%,var(--teal) 0%,#102531 45%,transparent 100%)}
+.shero{min-height:50svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:100px 20px 36px;background:radial-gradient(120% 80% at 50% 0%,var(--teal) 0%,#102531 45%,transparent 100%)}
 .crumb{font-size:13px;color:var(--sec);margin-bottom:14px;letter-spacing:.03em}
 .crumb a{color:var(--sec);text-decoration:none}
 .crumb a:hover{color:var(--or)}
@@ -110,4 +110,4 @@ footer .sign{font-style:italic;color:var(--or2);margin-top:10px}
 @media(max-width:600px){.nav-tagline{display:none}}
 /* Sous 380px, le bouton retour chevauche le logo. Il est redondant : logo cliquable, fil d'Ariane et menu burger mènent tous à l'accueil. */
 @media(max-width:380px){.nav-home{display:none}}
-@media(min-width:768px){section{padding:56px 32px}}
+@media(min-width:768px){section{padding:40px 32px}}
