@@ -15,6 +15,8 @@ Francis Darcy a animé des événements pour des entreprises et collectivités d
 - /ateliers-magie : Ateliers d'initiation à la magie pour enfants, écoles et team building
 - /zone-intervention : Zone d'intervention — Indre (36), Cher (18) et tout le Centre-Val de Loire : Châteauroux, Bourges, Vierzon, Tours, Blois, Orléans
 - /magicien-chateauroux : Magicien à Châteauroux et Déols, à 30 minutes d'Issoudun, déplacement inclus
+- /magicien-bourges : Magicien à Bourges et dans le Cher, à 50 minutes d'Issoudun, déplacement inclus
+- /magicien-vierzon : Magicien à Vierzon et Mehun-sur-Yèvre, à 40 minutes d'Issoudun, déplacement inclus
 - /mentions-legales : Mentions légales, politique de confidentialité et RGPD
 
 ## Faits utiles

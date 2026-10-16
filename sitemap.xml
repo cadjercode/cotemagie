@@ -41,6 +41,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.cotemagie.fr/magicien-bourges</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.cotemagie.fr/magicien-vierzon</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.cotemagie.fr/mentions-legales</loc>
     <lastmod>2026-08-17</lastmod>
   </url>
