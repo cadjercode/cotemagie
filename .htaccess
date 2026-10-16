@@ -11,6 +11,12 @@ RewriteRule ^(.*)$ https://www.cotemagie.fr/$1 [R=301,L]
 RewriteRule ^plan1/?$ / [R=301,L]
 RewriteRule ^blank/?$ / [R=301,L]
 RewriteRule ^decouvrez-la-magie-avec-cote-magie/?$ / [R=301,L]
+RewriteRule ^scupture-ballons/?$ /sculpture-ballons [R=301,L]
+RewriteRule ^post/.*mariage /close-up [R=301,L,NC]
+# Accents en UTF-8 = 2 octets : « ch.{1,2}teauroux » couvre chateauroux et châteauroux
+RewriteRule ^post/.*ch.{1,2}teauroux /magicien-chateauroux [R=301,L,NC]
+RewriteRule ^post/.*(ballon|fete-de-village|patronale|march) /sculpture-ballons [R=301,L,NC]
+RewriteRule ^post/.*(spectacle|magie-pour-les-petits|cole-magique|biblioth) /spectacles-enfants [R=301,L,NC]
 RewriteRule ^post/ /ateliers-magie [R=301,L]
 RewriteRule ^actualit.*$ / [R=301,L]
 
