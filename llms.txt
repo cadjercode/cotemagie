@@ -14,6 +14,7 @@ Francis Darcy a animé des événements pour des entreprises et collectivités d
 - /sculpture-ballons : Sculptures sur ballons pour fêtes de village, kermesses et événements familiaux
 - /ateliers-magie : Ateliers d'initiation à la magie pour enfants, écoles et team building
 - /zone-intervention : Zone d'intervention — Indre (36), Cher (18) et tout le Centre-Val de Loire : Châteauroux, Bourges, Vierzon, Tours, Blois, Orléans
+- /magicien-chateauroux : Magicien à Châteauroux et Déols, à 30 minutes d'Issoudun, déplacement inclus
 - /mentions-legales : Mentions légales, politique de confidentialité et RGPD
 
 ## Faits utiles
