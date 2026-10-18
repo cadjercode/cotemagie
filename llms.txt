@@ -7,6 +7,8 @@ Francis Darcy a animé des événements pour des entreprises et collectivités d
 ## Pages
 
 - / : Présentation générale, prestations, références clients, témoignages Google, formulaire de contact
+- /francis-darcy : Parcours de Francis Darcy et articles de presse (La Nouvelle République 2019, Le Berry Républicain 2014 et 2025)
+- /mariage : Magicien pour mariage : close-up au vin d'honneur, spectacle au repas, sculpture sur ballons pour les enfants
 - /close-up : Magie de proximité pour mariages, cocktails, vins d'honneur et soirées d'entreprise
 - /spectacles-enfants : Spectacles interactifs pour anniversaires, écoles, centres de loisirs et arbres de Noël
 - /arbre-de-noel : Spectacle de magie pour l'arbre de Noël des comités d'entreprise, écoles, mairies et associations
